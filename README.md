@@ -14,3 +14,5 @@ HackCoin is a cryptocurrency created to empower a free community of people on th
 ## Author
 
 The project was created by Solo — a passionate supporter of internet freedom, crypto enthusiast, and hacker culture advocate. The idea came as a response to growing centralization and censorship in the digital space.
+
+![alt text](image.png)

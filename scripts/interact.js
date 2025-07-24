@@ -6,7 +6,7 @@ async function main() {
   const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_API_URL);
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
-  const contractAddress = "0x4c62a060facdD0f7fEb592dCBBEc15C8f584A9c0";
+  import { CONTRACT_ADDRESS } from "./config.js";
   const abi = [
     "function mint(address to, uint256 amount) public",
     "function burn(uint256 amount) public",

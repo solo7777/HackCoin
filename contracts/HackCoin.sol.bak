@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract HackCoin is ERC20, Ownable {
     constructor(uint256 initialSupply) ERC20("HackCoin", "HKC") {
-        // We exchange the initial reserve for the contract owner
+        // Мінтимо початковий запас власнику контракту
         _mint(msg.sender, initialSupply * 10 ** decimals());
     }
 

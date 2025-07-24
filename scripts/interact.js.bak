@@ -1,0 +1,33 @@
+import { ethers } from "ethers";
+import dotenv from "dotenv";
+dotenv.config();
+
+async function main() {
+  const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_API_URL);
+  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+
+  const contractAddress = "0x4c62a060facdD0f7fEb592dCBBEc15C8f584A9c0";
+  const abi = [
+    "function mint(address to, uint256 amount) public",
+    "function burn(uint256 amount) public",
+    "function balanceOf(address account) public view returns (uint256)"
+  ];
+
+  const token = new ethers.Contract(contractAddress, abi, wallet);
+
+  const to = wallet.address;
+  const amount = ethers.parseUnits("1000", 18); // 1000 токенів
+
+  console.log("💰 Minting tokens...");
+  const mintTx = await token.mint(to, amount);
+  await mintTx.wait();
+  console.log(`✅ Minted to ${to}`);
+
+  const balance = await token.balanceOf(to);
+  console.log(`🔎 Balance: ${ethers.formatUnits(balance, 18)} HKC`);
+}
+
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

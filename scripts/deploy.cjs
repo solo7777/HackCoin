@@ -1,19 +1,19 @@
 const hre = require("hardhat");
 
 async function main() {
-  const initialSupply = hre.ethers.utils.parseUnits("4000000", 18); // 4 млн токенів з 18 decimals
+  const initialSupply = hre.ethers.parseUnits("4000000", 18);
 
   const HackCoin = await hre.ethers.getContractFactory("HackCoin");
   const hackCoin = await HackCoin.deploy(initialSupply);
 
-  await hackCoin.deployed();
+  await hackCoin.waitForDeployment();
 
-  console.log("HackCoin deployed to:", hackCoin.address);
+  console.log("HackCoin deployed to:", hackCoin.target);
 }
 
 main()
   .then(() => process.exit(0))
-  .catch(error => {
+  .catch((error) => {
     console.error(error);
     process.exit(1);
   });

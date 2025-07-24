@@ -1,10 +1,9 @@
-const { ethers } = require("hardhat");
+const hre = require("hardhat");
 
 async function main() {
-  // Number of tokens, taking into account 18 decimal places
-  const initialSupply = ethers.utils.parseUnits("4000000", 18);
+  const initialSupply = hre.ethers.utils.parseUnits("4000000", 18); // 4 million tokens
 
-  const HackCoin = await ethers.getContractFactory("HackCoin");
+  const HackCoin = await hre.ethers.getContractFactory("HackCoin");
   const hackCoin = await HackCoin.deploy(initialSupply);
 
   await hackCoin.deployed();

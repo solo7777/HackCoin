@@ -34,7 +34,7 @@ Unlike many cryptocurrencies, HackCoin has a clear mission: to support freedom a
 
 **How to Get Involved?**  
 
-- Join our Telegram channel: [insert link].  
+- Join our Telegram channel: [https://t.me/hackcoin_hkc].  
 - Join our x.com channel: [https://x.com/Hackcoin_HKC].  
 - Contact us: [solo.t.s20@gmail.com].  
 

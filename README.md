@@ -2,18 +2,41 @@
 
 ## Idea
 
-HackCoin is a cryptocurrency created to empower a free community of people on the internet who value freedom, openness, and access to information. We believe that technology should serve people without restrictions, and HackCoin aims to be a tool supporting those who fight for digital freedom and justice online.
+### Опис англійською для HackCoin:
 
-## Goals
+**HackCoin: A Cryptocurrency for a Free Digital World**
 
-- Provide a decentralized and free way to exchange value within the internet community.
-- Support projects that promote open access to knowledge and innovation.
-- Build a transparent and reliable platform where every participant has equal rights.
-- Foster a culture of responsible hacking and digital ethics.
+**What is HackCoin?**  
 
-## Author
+HackCoin is a decentralized cryptocurrency designed to empower a global community that values freedom of information, open access to knowledge, and ethical use of technology. Our mission is to create a secure and anonymous tool for value exchange on the internet, supporting projects that promote free speech, open-source development, and resistance to digital censorship.
 
-The project was created by Solo — a passionate supporter of internet freedom, crypto enthusiast, and hacker culture advocate. The idea came as a response to growing centralization and censorship in the digital space.
+**Our Goals:**  
 
-<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/e4e4431c-e21d-48b6-a0b3-7f58249ea4a6" />
+- Build a fast, secure, and decentralized platform for transactions, accessible to everyone.  
+- Fund open-source projects and initiatives that advance freedom of information (e.g., tools to bypass censorship or educational platforms).  
+- Ensure transparency and equal rights for all network participants.  
+- Promote a culture of ethical hacking, where technology serves people, not corporations or governments.  
+
+**How It Works?**  
+
+HackCoin is currently in the early development stage. We are building a token on [insert blockchain, e.g., Ethereum/BSC/Solana or custom, if planned], focusing on low fees, anonymity, and scalability. Our roadmap includes:  
+- Q3 2025: Release of White Paper and prototype smart contracts.  
+- Q4 2025: Launch of testnet and engagement of early community members.  
+- Q1 2026: Security audit and mainnet launch.  
+
+**Who We Are?**  
+
+Founded by Solo, a passionate advocate for internet freedom, cryptocurrency enthusiast, and supporter of hacker ethics. We are looking for like-minded developers, marketers, and investors who share our vision of a free digital world.
+
+**Why HackCoin?**  
+
+Unlike many cryptocurrencies, HackCoin has a clear mission: to support freedom and innovation. Every token is a step toward projects that make the internet open and accessible for all. Join us to build a future without censorship!
+
+**How to Get Involved?**  
+
+- Join our Telegram channel: [insert link].  
+- Join our x.com channel: [https://x.com/Hackcoin_HKC].  
+- Contact us: [solo.t.s20@gmail.com].  
+
+---
 

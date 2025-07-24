@@ -1,3 +1,5 @@
+![resize upload222ed logo](https://github.com/user-attachments/assets/7d485132-647a-4932-a36b-ea19542db8c8)
+
 # HackCoin
 
 ## Idea

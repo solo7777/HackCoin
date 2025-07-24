@@ -1,14 +1,20 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  const HackCoin = await ethers.getContractFactory("HackCoin");
-  const hackCoin = await HackCoin.deploy();
-  await hackCoin.waitForDeployment();
+  // Number of tokens, taking into account 18 decimal places
+  const initialSupply = ethers.utils.parseUnits("4000000", 18);
 
-  console.log("HackCoin deployed to:", hackCoin.target);
+  const HackCoin = await ethers.getContractFactory("HackCoin");
+  const hackCoin = await HackCoin.deploy(initialSupply);
+
+  await hackCoin.deployed();
+
+  console.log("HackCoin deployed to:", hackCoin.address);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

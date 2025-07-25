@@ -3,7 +3,7 @@ const { ethers } = require("hardhat");
 
 describe("HackCoin contract", function () {
   let HackCoin, hackCoin, owner, addr1, addr2;
-  const initialSupply = ethers.parseUnits("1000000", 18); // 1 млн токенів
+  const initialSupply = ethers.parseUnits("4000000", 18); // 1 млн токенів
 
   beforeEach(async function () {
     [owner, addr1, addr2] = await ethers.getSigners();

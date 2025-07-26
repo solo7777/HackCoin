@@ -19,7 +19,7 @@ HackCoin is a decentralized cryptocurrency designed to empower a global communit
 
 **How It Works?**  
 
-HackCoin is currently in the early development stage. We are building a token on [insert blockchain, e.g., Ethereum/BSC/Solana or custom, if planned], focusing on low fees, anonymity, and scalability. Our roadmap includes:  
+HackCoin is currently in the early development stage. We are building a token on Ethereum, focusing on low fees, anonymity, and scalability. Our roadmap includes:  
 - Q3 2025: Release of White Paper and prototype smart contracts.  
 - Q4 2025: Launch of testnet and engagement of early community members.  
 - Q1 2026: Security audit and mainnet launch.  

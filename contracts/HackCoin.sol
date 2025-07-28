@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract HackCoin is ERC20, Ownable {
+    uint256 public maxSupply = 4000000 * 10 ** decimals();
     constructor(uint256 initialSupply) ERC20("HackCoin", "HKC") Ownable(msg.sender) {
         _mint(msg.sender, initialSupply * 10 ** decimals());
     }

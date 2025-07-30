@@ -4,13 +4,12 @@ pragma solidity ^0.8.28;
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-/// @title HackCoin — Freedom & Participation Token
+/// @title HackCoin — Token of the Free Internet Community
 contract HackCoin is ERC20Votes, Ownable {
     uint256 public constant MAX_SUPPLY = 4_000_000 * 10 ** 18;
 
     constructor()
         ERC20("HackCoin", "HKC")
-        ERC20Permit("HackCoin")
     {
         _mint(msg.sender, 3_950_000 * 10 ** decimals());
     }

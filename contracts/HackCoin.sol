@@ -1,15 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract HackCoin is ERC20Votes, Ownable {
+contract HackCoin is ERC20, ERC20Permit, ERC20Votes, Ownable {
     uint256 public constant MAX_SUPPLY = 4_000_000 * 10 ** 18;
 
     constructor()
         ERC20("HackCoin", "HKC")
-        ERC20Permit("HackCoin")  // потрібно для голосування
+        ERC20Permit("HackCoin")
     {
         _mint(msg.sender, 3_950_000 * 10 ** decimals());
     }
@@ -24,7 +26,7 @@ contract HackCoin is ERC20Votes, Ownable {
         _burn(msg.sender, amount * 10 ** decimals());
     }
 
-    // Override-и для ERC20Votes
+    // Обов’язкові override-и
     function _afterTokenTransfer(address from, address to, uint256 amount)
         internal override(ERC20, ERC20Votes)
     {

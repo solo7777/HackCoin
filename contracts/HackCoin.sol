@@ -10,12 +10,12 @@ contract HackCoin is ERC20Votes, Ownable {
 
     constructor()
         ERC20("HackCoin", "HKC")
-        ERC20Permit("HackCoin")
+        ERC20Votes()
     {
-        _mint(msg.sender, 3_950_000 * 10 ** decimals()); // Initial mint
+        _mint(msg.sender, 3_950_000 * 10 ** decimals());
     }
 
-    /// @notice Mint new tokens (only owner, max 4M)
+    /// @notice Mint new tokens (only owner)
     function mint(address to, uint256 amount) public onlyOwner {
         uint256 amountWithDecimals = amount * 10 ** decimals();
         require(totalSupply() + amountWithDecimals <= MAX_SUPPLY, "Exceeds max supply");

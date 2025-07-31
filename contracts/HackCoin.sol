@@ -1,12 +1,13 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.28;
+pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
-contract HackCoin is ERC20, ERC20Permit, ERC20Votes, Ownable {
+contract HackCoin is ERC20, ERC20Permit, ERC20Votes, Ownable, ERC20Burnable {
     uint256 public maxSupply = 4000000 * 10 ** decimals(); // 4 млн токенів із 18 десятковими знаками
 
     constructor(uint256 initialSupply) 

@@ -1,46 +1,38 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
-contract HackCoin is ERC20Votes, Ownable {
-    uint256 public constant MAX_SUPPLY = 4_000_000 * 10 ** 18;
+contract HackCoin is ERC20, ERC20Permit, ERC20Votes, Ownable {
+    uint256 public maxSupply = 4000000 * 10 ** decimals(); // 4 млн токенів із 18 десятковими знаками
 
-    constructor()
-        ERC20("HackCoin", "HKC")
-        ERC20Permit("HackCoin") // обов’язковий виклик для ERC20Votes
+    constructor(uint256 initialSupply) 
+        ERC20("HackCoin", "HCK")
+        ERC20Permit("HackCoin")
+        Ownable(msg.sender)
     {
-        _mint(msg.sender, 3_950_000 * 10 ** decimals());
+        require(initialSupply <= maxSupply, "Initial supply exceeds max supply");
+        _mint(msg.sender, initialSupply * 10 ** decimals());
     }
 
-    /// @notice Можна карбувати лише до MAX_SUPPLY
     function mint(address to, uint256 amount) public onlyOwner {
-        uint256 amountWithDecimals = amount * 10 ** decimals();
-        require(totalSupply() + amountWithDecimals <= MAX_SUPPLY, "Cap exceeded");
-        _mint(to, amountWithDecimals);
+        require(totalSupply() + amount * 10 ** decimals() <= maxSupply, "Exceeds max supply");
+        _mint(to, amount * 10 ** decimals());
     }
 
-    function burn(uint256 amount) public {
-        _burn(msg.sender, amount * 10 ** decimals());
-    }
-
-    // --- Необхідні override-и для ERC20Votes ---
-    function _afterTokenTransfer(address from, address to, uint256 amount)
-        internal override(ERC20, ERC20Votes)
+    // Перевизначення _update для ERC20Votes
+    function _update(address from, address to, uint256 value) 
+        internal 
+        override(ERC20, ERC20Votes) 
     {
-        super._afterTokenTransfer(from, to, amount);
+        super._update(from, to, value);
     }
 
-    function _mint(address to, uint256 amount)
-        internal override(ERC20, ERC20Votes)
-    {
-        super._mint(to, amount);
-    }
-
-    function _burn(address account, uint256 amount)
-        internal override(ERC20, ERC20Votes)
-    {
-        super._burn(account, amount);
+    // Перевизначення nonces для ERC20Permit
+    function nonces(address owner) public view override(ERC20Permit, Nonces) returns (uint256) {
+        return super.nonces(owner);
     }
 }

@@ -127,4 +127,8 @@ HackCoin is more than a token — it’s a growing ecosystem designed for commun
 **Date**: 2025
 **License**: MIT
 
+<<<<<<< HEAD
 ---
+=======
+---
+>>>>>>> ccf2ace45a2d1578f3360b33afd5aee177645eb8

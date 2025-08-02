@@ -1,3 +1,7 @@
 // SPDX-License-Identifier: MIT
 
+<<<<<<< HEAD
 In development
+=======
+In development
+>>>>>>> ccf2ace45a2d1578f3360b33afd5aee177645eb8

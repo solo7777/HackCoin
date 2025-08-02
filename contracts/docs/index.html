@@ -67,6 +67,7 @@
             top: 0;
             width: 100%;
             background: rgba(10, 10, 10, 0.95);
+            -webkit-backdrop-filter: blur(10px); /* For Safari support */
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
@@ -778,13 +779,13 @@
             <div class="contact-card fade-in">
                 <span class="card-icon">💬</span>
                 <h3>Telegram</h3>
-                <a href="https://t.me/hackcoin_hkc" target="_blank">Join our channel</a>
+                <a href="https://t.me/hackcoin_hkc" target="_blank" rel="noopener">Join our channel</a>
             </div>
             
             <div class="contact-card fade-in">
                 <span class="card-icon">🐦</span>
                 <h3>X (Twitter)</h3>
-                <a href="https://x.com/Hackcoin_HKC" target="_blank">Follow us</a>
+                <a href="https://x.com/Hackcoin_HKC" target="_blank" rel="noopener">Follow us</a>
             </div>
             
             <div class="contact-card fade-in">
@@ -796,7 +797,7 @@
             <div class="contact-card fade-in">
                 <span class="card-icon">💻</span>
                 <h3>GitHub</h3>
-                <a href="https://github.com/solo7777/HackCoin" target="_blank">View Code</a>
+                <a href="https://github.com/solo7777/HackCoin" target="_blank" rel="noopener">View Code</a>
             </div>
         </div>
     </section>

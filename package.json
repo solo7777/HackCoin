@@ -1,22 +1,26 @@
 {
   "name": "hackcoin",
   "version": "1.0.0",
-  "type": "module",
-  "main": "index.js",
+  "description": "HackCoin ERC-20 token project",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^6.0.0",
-    "hardhat": "^2.25.0"
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deployHackCoin.js --network sepolia",
+    "deployDAO": "npx hardhat run scripts/deployDAO.js --network sepolia",
+    "testMint": "npx hardhat run scripts/testMint.js --network sepolia",
+    "mintMore": "npx hardhat run scripts/mintMoreTokens.js --network sepolia",
+    "delegate": "npx hardhat run scripts/delegateTokens.js --network sepolia",
+    "testDAO": "npx hardhat run scripts/testDAO.js --network sepolia",
+    "voteDAO": "npx hardhat run scripts/voteDAO.js --network sepolia",
+    "getProposalId": "npx hardhat run scripts/getProposalId.js --network sepolia",
+    "verify": "npx hardhat verify",
+    "verifyTimelock": "npx hardhat run scripts/verifyTimelock.js --network sepolia"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.3.0",
-    "dotenv": "^17.2.0"
+    "@openzeppelin/contracts": "^5.4.0",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^17.2.1"
+  },
+  "devDependencies": {
+    "hardhat": "^2.22.0"
   }
 }
-

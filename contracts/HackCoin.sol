@@ -1,29 +1,39 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.28;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-/// @title HackCoin - Token of the Free Internet Community
-/// @author Solo
-/// @notice This is a simple ERC20 token representing the spirit of hackers and digital freedom.
+contract HackCoin is ERC20, ERC20Burnable, ERC20Votes, ERC20Permit, Ownable {
+    uint256 private constant _CAP = 100_000_000 * 10**18;
 
-contract HackCoin is ERC20, Ownable {
-    constructor(uint256 initialSupply) ERC20("HackCoin", "HKC") {
-        // We exchange the initial reserve for the contract owner
-        _mint(msg.sender, initialSupply * 10 ** decimals());
+    constructor(address initialOwner)
+        ERC20("HackCoin", "HACK")
+        ERC20Permit("HackCoin")
+        Ownable(initialOwner)
+    {
+        _mint(initialOwner, 10_000_000 * 10**18);
+    }
+    
+    // Перевизначаємо функцію nonces.
+    // Оскільки HackCoin успадковує ERC20Permit, який має свою реалізацію nonces,
+    // ми просто викликаємо реалізацію базового класу.
+    function nonces(address owner) public view override(ERC20Permit, Nonces) returns (uint256) {
+        return super.nonces(owner);
     }
 
-    /// @notice Mint new tokens (only owner)
-    /// @param to Address to receive tokens
-    /// @param amount Amount of tokens (in whole units, без множення)
     function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount * 10 ** decimals());
+        require(totalSupply() + amount <= _CAP, "Exceeds supply cap");
+        _mint(to, amount);
     }
-
-    /// @notice Burn tokens від власника виклику
-    /// @param amount Кількість токенів для спалювання (в цілих одиницях)
-    function burn(uint256 amount) public {
-        _burn(msg.sender, amount * 10 ** decimals());
+    
+    function _update(address from, address to, uint256 amount)
+        internal
+        override(ERC20, ERC20Votes) // Прибрали ERC20Permit з override
+    {
+        super._update(from, to, amount);
     }
 }

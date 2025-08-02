@@ -1,7 +1,5 @@
 const hre = require("hardhat");
 
-// Temporary change to update commit history
-
 async function main() {
     const daoAddress = "0xA3A50E5327CfeD5118d43c7cE57Bb69176eb5965";
     const dao = await hre.ethers.getContractAt("DAO", daoAddress);

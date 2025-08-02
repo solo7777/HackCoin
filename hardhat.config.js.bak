@@ -2,6 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 console.log("PRIVATE_KEY length:", process.env.PRIVATE_KEY?.length);
 
+// Temporary change to update commit history
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {

@@ -4,7 +4,7 @@
 
 ## Idea
 
-**HackCoin: A Cryptocurrency for a Free Digital World**
+**HackCoin: A Cryptocurrency for a Free Digital World** // Temporary change to update commit history
 
 **What is HackCoin?**
 HackCoin is a decentralized cryptocurrency designed to empower a global community that values freedom of information, open access to knowledge, and ethical use of technology. Our mission is to create a secure and anonymous tool for value exchange on the internet, supporting projects that promote free speech, open-source development, and resistance to digital censorship.

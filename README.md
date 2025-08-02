@@ -1,24 +1,9 @@
-<<<<<<< HEAD
-# Sample Hardhat Project
-=======
 ![resize upload222ed logo](https://github.com/user-attachments/assets/7d485132-647a-4932-a36b-ea19542db8c8)
 
 # HackCoin
->>>>>>> ccf2ace45a2d1578f3360b33afd5aee177645eb8
 
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
 
-Try running some of the following tasks:
-
-<<<<<<< HEAD
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
-=======
 **What is HackCoin?**
 HackCoin is a decentralized cryptocurrency designed to empower a global community that values freedom of information, open access to knowledge, and ethical use of technology. Our mission is to create a secure and anonymous tool for value exchange on the internet, supporting projects that promote free speech, open-source development, and resistance to digital censorship.
 
@@ -49,4 +34,3 @@ Unlike many cryptocurrencies, HackCoin has a clear mission: to support freedom a
 * Contact us: \[[solo.t.s20@gmail.com](mailto:solo.t.s20@gmail.com)].
 
 ---
->>>>>>> ccf2ace45a2d1578f3360b33afd5aee177645eb8

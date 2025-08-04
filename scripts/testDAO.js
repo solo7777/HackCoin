@@ -1,68 +1,41 @@
-<<<<<<< HEAD
 const hre = require("hardhat");
 
 async function main() {
+    // Вставте адреси ваших розгорнутих контрактів
+    const hackCoinAddress = "0x25A0FDdad8f33b2E46ffD72f2cb6705386CD5363";
     const daoAddress = "0xA3A50E5327CfeD5118d43c7cE57Bb69176eb5965";
-    const dao = await hre.ethers.getContractAt("DAO", daoAddress);
+    const timelockAddress = "0x248c9Db116A58587b8225CBfE183bbB82ED6966A"; // Не використовується в цьому скрипті, але варто мати
+
     const [deployer] = await hre.ethers.getSigners();
     console.log("Testing DAO from account:", deployer.address);
 
-    const targets = [deployer.address];
-    const values = [0];
-    const calldatas = ["0x"];
-    const description = "Test proposal 2";
-    const tx = await dao.propose(targets, values, calldatas, description);
-    console.log("Proposal transaction sent:", tx.hash);
-    const receipt = await tx.wait();
+    // 1. Отримати екземпляр контракту токена HackCoin
+    const hackCoin = await hre.ethers.getContractAt("HackCoin", hackCoinAddress);
 
-    // Розпарсити подію ProposalCreated
-    const proposalCreatedEvent = receipt.logs.find(
-        log => log.topics[0] === hre.ethers.id("ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)")
-    );
-    if (!proposalCreatedEvent) {
-        throw new Error("ProposalCreated event not found");
-    }
-    const decodedEvent = dao.interface.parseLog(proposalCreatedEvent);
-    const proposalId = decodedEvent.args.proposalId;
-    console.log("Proposal ID:", proposalId.toString());
-    console.log("Proposal created");
-}
+    // 2. Делегування права голосу
+    // Це найважливіший крок, який дозволяє вашому обліковому запису мати достатньо голосів для створення пропозиції
+    console.log("Delegating votes from", deployer.address, "to itself...");
+    const delegateTx = await hackCoin.delegate(deployer.address);
+    await delegateTx.wait();
+    console.log("Votes delegated successfully!");
 
-main().catch((error) => {
-    console.error("Error:", error);
-    process.exitCode = 1;
-=======
-const hre = require("hardhat");
-
-async function main() {
-    const daoAddress = "0xA3A50E5327CfeD5118d43c7cE57Bb69176eb5965";
+    // 3. Отримати екземпляр контракту DAO
     const dao = await hre.ethers.getContractAt("DAO", daoAddress);
-    const [deployer] = await hre.ethers.getSigners();
-    console.log("Testing DAO from account:", deployer.address);
 
-    const targets = [deployer.address];
-    const values = [0];
-    const calldatas = ["0x"];
-    const description = "Test proposal 2";
-    const tx = await dao.propose(targets, values, calldatas, description);
-    console.log("Proposal transaction sent:", tx.hash);
-    const receipt = await tx.wait();
+    // 4. Створення пропозиції
+    const targets = [deployer.address]; // Приклад: пропозиція надіслати кошти на адресу розгортача
+    const values = [0]; // 0 ETH
+    const calldatas = ["0x"]; // Без даних
+    const description = "Test proposal for HackCoinDAO";
 
-    // Розпарсити подію ProposalCreated
-    const proposalCreatedEvent = receipt.logs.find(
-        log => log.topics[0] === hre.ethers.id("ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)")
-    );
-    if (!proposalCreatedEvent) {
-        throw new Error("ProposalCreated event not found");
-    }
-    const decodedEvent = dao.interface.parseLog(proposalCreatedEvent);
-    const proposalId = decodedEvent.args.proposalId;
-    console.log("Proposal ID:", proposalId.toString());
-    console.log("Proposal created");
+    console.log("Creating a new proposal...");
+    const proposeTx = await dao.propose(targets, values, calldatas, description);
+    console.log("Proposal transaction sent:", proposeTx.hash);
+    await proposeTx.wait();
+    console.log("Proposal created successfully!");
 }
 
 main().catch((error) => {
-    console.error("Error:", error);
+    console.error(error);
     process.exitCode = 1;
->>>>>>> ccf2ace45a2d1578f3360b33afd5aee177645eb8
 });

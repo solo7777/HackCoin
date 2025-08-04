@@ -91,8 +91,5 @@ contract DAO is Governor, GovernorCountingSimple, GovernorVotes, GovernorTimeloc
     function proposalThreshold() public pure override returns (uint256) {
         return 1_000_000 * 10**18;
     }
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> ccf2ace45a2d1578f3360b33afd5aee177645eb8
+	
+}	
